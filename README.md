@@ -12,7 +12,7 @@ php artisan migrate --seed
 
 php artisan passport:install
 
-3.Go to frontend folder in CMD,in Frontend run below command
+3. Angular JS AAP is inside 'Frontend' folder. Go to frontend folder in CMD and run below command
 
 npm install and yarn install
 
