@@ -6,6 +6,7 @@ use App\Products;
 use App\Http\Controllers\Controller;
 use Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -18,6 +19,11 @@ class ProductsController extends Controller
     {
         try {
             $products = Products::paginate(3);
+            $i=0;
+            foreach($products as $city){
+                $products[$i]['city_name'] = DB::table('cities')->where('id', $products[$i]['city_id'])->first()->title;
+                $i++;
+            }
             return response()->success($products);
         } catch (Exception $e) {
             Debugbar::addThrowable($e);

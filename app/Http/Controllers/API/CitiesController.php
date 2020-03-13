@@ -6,6 +6,7 @@ use App\Cities;
 use App\Http\Controllers\Controller;
 use Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitiesController extends Controller
 {
@@ -18,7 +19,12 @@ class CitiesController extends Controller
     {
         try {
             $cities = Cities::paginate(3);
-            return response()->success($cities);
+            $i=0;
+            foreach($cities as $city){
+                $cities[$i]['country_name'] = DB::table('countries')->where('id', $cities[$i]['country_id'])->first()->title;
+                $i++;
+            }
+            return  response()->success($cities);
         } catch (Exception $e) {
             Debugbar::addThrowable($e);
             return response()->exception($e->getMessage(), $e->getCode());
