@@ -16,7 +16,7 @@ php artisan passport:install
 
 npm install and yarn install
 
-4.After you run passprt:install command you get 2 keys
+4.After you run passport:install command you get 2 keys
 take second key and set it in frontend/enviroments/environment.ts and frontend/enviroments/environment.prod.ts and set backend url ex: http://localhost:8000
 
 5.in fronetend run ng serve and in backend run php artisan serve
