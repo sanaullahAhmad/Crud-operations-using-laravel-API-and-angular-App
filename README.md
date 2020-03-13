@@ -1,6 +1,6 @@
 #Installation steps
 
-1.Clone repository
+1.Clone repository. creat database in phpmyadmin with some name. add .env file and add DB, User password in it.
 
 2.run below command
 
