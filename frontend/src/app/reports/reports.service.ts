@@ -7,43 +7,43 @@ import { EnvironmentService } from "./../shared/environment/environment.service"
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable()
-export class ProductsService {
+export class ReportsService {
 
   constructor(
     private _http: HttpClient,
     private environmentService: EnvironmentService
   ) {}
 
-  getProducts(page){
-    let url = this.environmentService.setApiServiceWithPage('products', page)
+  getReports(page){
+    let url = this.environmentService.setApiServiceWithPage('reports', page)
     return this._http.get(url)
         .map(res=> res)
         .catch(this.handleError)
   }
 
-  getProductsById($id){
-    let url = this.environmentService.setApiServiceById('products', $id)
+  getReportsById($id){
+    let url = this.environmentService.setApiServiceById('reports', $id)
     return this._http.get(url)
         .map(res=> res)
         .catch(this.handleError)
   }
 
-  addProducts(productsData){
-    let url = this.environmentService.setApiService('products')
-    return this._http.post(url, productsData)
+  addReports(reportsData){
+    let url = this.environmentService.setApiService('reports')
+    return this._http.post(url, reportsData)
         .map(res=> res)
         .catch(this.handleError)
   }
 
-  updateProducts(productsData){
-    let url = this.environmentService.setApiServiceById('products', productsData.id)
-    return this._http.put(url, productsData)
+  updateReports(reportsData){
+    let url = this.environmentService.setApiServiceById('reports', reportsData.id)
+    return this._http.put(url, reportsData)
         .map(res=> res)
         .catch(this.handleError)
   }
 
-  deleteProducts($id){
-    let url = this.environmentService.setApiServiceById('products', $id)
+  deleteReports($id){
+    let url = this.environmentService.setApiServiceById('reports', $id)
     return this._http.delete(url)
         .map(res=> res)
         .catch(this.handleError)

@@ -2,38 +2,38 @@ import { Component,ViewChild, OnInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { NotificationService } from './../../shared';
-import { ProductsService } from "./../products.service";
+import { ReportsService } from "./../reports.service";
 
 
 @Component({
-  selector: 'app-products-index',
-  templateUrl: './products-index.component.html',
-  styleUrls: ['./products-index.component.css']
+  selector: 'app-reports-index',
+  templateUrl: './reports-index.component.html',
+  styleUrls: ['./reports-index.component.css']
 })
-export class ProductsIndexComponent implements OnInit {
-  @ViewChild('ProductsImageModal') ProductsImageModal: ModalDirective;
+export class ReportsIndexComponent implements OnInit {
+  @ViewChild('ReportsImageModal') ReportsImageModal: ModalDirective;
   p: number = 1;
-  products = [];
+  reports = [];
   errMesg: any;
   totalRecords = 0;
   pageSize = 5;
-  productsImage = '';
+  reportsImage = '';
 
   constructor(
     private spinnerService: Ng4LoadingSpinnerService, 
-    private productsService: ProductsService,
+    private reportsService: ReportsService,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
-  	this.getProducts();
+  	this.getReports();
   }
 
-  getProducts(){
+  getReports(){
     this.spinnerService.show();
-    this.productsService.getProducts(1)
+    this.reportsService.getReports(1)
       .subscribe((response) => {
-        this.products = response.data.data
+        this.reports = response.data.data
         this.totalRecords =response.data.total
         this.spinnerService.hide();
       });
@@ -42,28 +42,28 @@ export class ProductsIndexComponent implements OnInit {
   getPage($page)
   {
     this.spinnerService.show();
-    this.productsService.getProducts($page)
+    this.reportsService.getReports($page)
       .subscribe((response) => {
-        this.products = response.data.data
+        this.reports = response.data.data
         this.totalRecords =response.data.total
         this.p = $page
         this.spinnerService.hide();
       });
   }
 
-  deleteProducts($id){
+  deleteReports($id){
     this.spinnerService.show();
-    this.productsService.deleteProducts($id)
+    this.reportsService.deleteReports($id)
       .subscribe(data => {
         this.spinnerService.hide();
         this.notificationService.onSuccess('Successfully Deleted.')
-        this.getProducts()
+        this.getReports()
     })
   }
 
   viewImage(image){
-    this.productsImage = image
-    this.ProductsImageModal.show()
+    this.reportsImage = image
+    this.ReportsImageModal.show()
   }
 
 }

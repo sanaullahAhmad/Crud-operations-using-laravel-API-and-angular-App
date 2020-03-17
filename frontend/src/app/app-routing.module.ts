@@ -13,6 +13,8 @@ import { ProductsIndexComponent }   from './products/products-index/products-ind
 import { ProductsAddComponent }   from './products/products-add/products-add.component';
 import { ProductsUpdateComponent }   from './products/products-update/products-update.component';
 
+import { ReportsIndexComponent }   from './reports/reports-index/reports-index.component';
+
 import { LoginComponent }   from './login/login.component';
 import { LogoutComponent }   from './logout/logout.component';
 import { RegisterComponent }   from './register/register.component';
@@ -47,6 +49,12 @@ const routes: Routes = [
   },
   { path: 'products/add', canActivate: [ ProtectedGuard ], component: ProductsAddComponent },
   { path: 'products/update/:id', canActivate: [ ProtectedGuard ], component: ProductsUpdateComponent },
+
+  {
+    path: 'reports',
+    canActivate: [ ProtectedGuard ],
+    component: ReportsIndexComponent 
+  },
   
   { path: 'login', canActivate: [ PublicGuard ], component: LoginComponent },
   { path: 'logout', canActivate: [ ProtectedGuard ], component: LogoutComponent },

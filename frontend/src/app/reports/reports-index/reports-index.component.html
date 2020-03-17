@@ -2,11 +2,16 @@
 <!-- <app-nav-sidebar></app-nav-sidebar> -->
 <br><br><br><br>
 <div class="container">
-  <h1>Products List 
-  </h1>
-  <p style="color: #FF0000" *ngIf="products?.length == 0" > No Data Found</p>
+  <h1>Reports List</h1>
+  <span *ngFor="let reports of reports">
+    <a class="btn btn-success pull-right margin-top-10 margin-right-10" routerLink="/reports/{{reports.id}}">
+      {{ reports.title }}
+    </a>
+  </span>
+  
+  <p style="color: #FF0000" *ngIf="reports?.length == 0" > No Data Found</p>
   <div class="table-responsive">
-  <table class="table table-bordered" *ngIf="products.length != 0">
+  <table class="table table-bordered" *ngIf="reports.length != 0">
     <thead class="thead-light text-center">
       <tr class="table-dark">
         <th>Title</th>
@@ -14,28 +19,15 @@
         <th>Price</th>
         <th>City</th>
         <th>Description</th>
-        <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let products of products | paginate: { id: 'server', itemsPerPage: 3, currentPage: p, totalItems: totalRecords }">
-        <td>{{ products.title }}</td>
-        <td>{{ products.brand }}</td>
-        <td>{{ products.price }}</td>
-        <td>{{ products.city_name }}</td>
-        <td>{{ products.description }}</td>
-        <td style="width: 130px">
-          <!-- <button class="btn btn-sm btn-info" (click)="viewImage(products.image)" >
-            <i class="fa fa-eye"></i>
-          </button> -->
-          <a class="btn btn-sm btn-secondary" routerLink="/products/update/{{products.id}}"><i class="fa fa-edit"></i></a>
-          <!-- <button class="btn btn-danger" (click)="deleteProducts(products.id)"><i class="fa fa-trash"></i></button> -->
-          <button class="btn btn-sm btn-danger" [swal]="deleteSwal">
-            <i class="fa fa-trash"></i>
-          </button>
-          <swal #deleteSwal title="Delete" text="This cannot be undone" type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteProducts(products.id)">
-          </swal>
-        </td>
+      <tr *ngFor="let reports of reports | paginate: { id: 'server', itemsPerPage: 3, currentPage: p, totalItems: totalRecords }">
+        <td>{{ reports.title }}</td>
+        <td>{{ reports.brand }}</td>
+        <td>{{ reports.price }}</td>
+        <td>{{ reports.city_name }}</td>
+        <td>{{ reports.description }}</td>
       </tr>
     </tbody>
   </table>

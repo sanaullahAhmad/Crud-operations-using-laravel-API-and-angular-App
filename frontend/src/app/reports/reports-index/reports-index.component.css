@@ -1,5 +1,8 @@
-	.margin-top-10 {
+  .margin-top-10 {
     margin-top: 10px;
+  }
+  .margin-right-10 {
+    margin-right: 10px;
   }
   /*.my-pagination /deep/ {
   		font-size: 18px;

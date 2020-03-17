@@ -35,6 +35,9 @@ import { ProductsIndexComponent } from './products/products-index/products-index
 import { ProductsAddComponent } from './products/products-add/products-add.component';
 import { ProductsUpdateComponent } from './products/products-update/products-update.component';
 
+import { ReportsService } from "./reports/reports.service";
+import { ReportsIndexComponent } from './reports/reports-index/reports-index.component';
+
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from "./register/register.service";
 import { LoginService } from "./login/login.service";
@@ -57,6 +60,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     ProductsIndexComponent,
     ProductsAddComponent,
     ProductsUpdateComponent,
+    ReportsIndexComponent,
     RegisterComponent,
     NavHeaderComponent,
     NavSidebarComponent,
@@ -86,6 +90,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     CountriesService,
     CitiesService,
     ProductsService,
+    ReportsService,
     RegisterService,
     LoginService,
     LogoutService,
