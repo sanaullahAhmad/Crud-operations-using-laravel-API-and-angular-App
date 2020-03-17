@@ -23,4 +23,5 @@ Route::group(['middleware' => ['cors','auth:api']], function () {
     Route::resource('countries', 'API\CountriesController');
     Route::resource('cities', 'API\CitiesController');
     Route::resource('products', 'API\ProductsController');
+    Route::resource('reports', 'API\ReportsController');
 });
