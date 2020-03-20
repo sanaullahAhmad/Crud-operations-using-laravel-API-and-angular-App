@@ -15,6 +15,9 @@ export class EnvironmentService {
 	setApiServiceWithPage(serviceStr, pageNo){
 	    return this.apiUrl +'api/'+ serviceStr +'?page='+ pageNo
 	}
+	setApiServiceWithSearch(serviceStr, searchBy, searchValue){
+	    return this.apiUrl +'api/'+ serviceStr +'?'+searchBy+'='+ searchValue
+	}
 	setApiServiceById(serviceStr, id){
 	    return this.apiUrl +'api/'+ serviceStr +'/'+ id
 	}
