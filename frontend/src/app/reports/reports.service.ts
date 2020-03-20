@@ -21,6 +21,13 @@ export class ReportsService {
         .catch(this.handleError)
   }
 
+  getReportsWithSearch($searchBy, $searchValue){
+    let url = this.environmentService.setApiServiceWithSearch('reports', $searchBy, $searchValue)
+    return this._http.get(url)
+        .map(res=> res)
+        .catch(this.handleError)
+  }
+
   getReportsById($id){
     let url = this.environmentService.setApiServiceById('reports', $id)
     return this._http.get(url)
